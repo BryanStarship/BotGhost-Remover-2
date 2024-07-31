@@ -35,6 +35,9 @@ app.listen(port, () => {
   console.log(`🔗 Powered By RTX`);
 });
 
+
+const { ActivityType } = require("discord.js");
+
 client.on('ready', () => {
     client.user.setStatus('available')
     client.user.setPresence({
