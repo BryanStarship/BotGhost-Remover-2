@@ -13,8 +13,6 @@
  * **********************************************
  */
 
-
-
 const { Client, GatewayIntentBits, ActivityType, TextChannel } = require('discord.js');
 require('dotenv').config();
 const express = require('express');
@@ -35,21 +33,9 @@ app.listen(port, () => {
   console.log(`🔗 Powered By RTX`);
 });
 
-
-const { ActivityType } = require("discord.js");
-
-client.on('ready', () => {
-    client.user.setStatus('available')
-    client.user.setPresence({
-        game: {
-            name: 'Désactiver Renix',
-            type: "PLAYING",
-            url: "https://www.youtube.com/@bryanstarship"
-        }
-    });
-
+const statusMessages = ["Désactiver Renix"];
 let currentIndex = 0;
-const channelId = '';
+const channelId = ''; // Définir l'ID du canal ici
 
 async function login() {
   try {
@@ -61,41 +47,18 @@ async function login() {
   }
 }
 
-/**
- ██████╗░████████╗██╗░░██╗           
- ██╔══██╗╚══██╔══╝╚██╗██╔╝          
- ██████╔╝░░░██║░░░░╚███╔╝░          
- ██╔══██╗░░░██║░░░░██╔██╗░          
- ██║░░██║░░░██║░░░██╔╝╚██╗          
- ╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝          
-GIT : https://github.com/RTX-GAMINGG/Bot-ghost-status-remover-by-RTX
-  DISCORD SERVER : https://discord.gg/FUEHs7RCqz
-  YOUTUBE : https://www.youtube.com/channel/UCPbAvYWBgnYhliJa1BIrv0A
- * **********************************************
- *   Code by RTX GAMING
- * **********************************************
- */
-
-
 function updateStatusAndSendMessages() {
   const currentStatus = statusMessages[currentIndex];
-  const nextStatus = statusMessages[(currentIndex + 1) % statusMessages.length];
 
   client.user.setPresence({
-        game: {
-            name: 'Désactiver Renix',
-            type: "PLAYING",
-            url: "https://www.youtube.com/@bryanstarship"
+    activities: [{ name: currentStatus, type: ActivityType.Playing }],
+    status: 'dnd',
   });
 
-  
   const textChannel = client.channels.cache.get(channelId);
 
   if (textChannel instanceof TextChannel) {
-   
     textChannel.send(`Bot status is: ${currentStatus}`);
-  } else {
-
   }
 
   currentIndex = (currentIndex + 1) % statusMessages.length;
@@ -128,3 +91,4 @@ GIT : https://github.com/RTX-GAMINGG/Bot-ghost-status-remover-by-RTX
  *   Code by RTX GAMING
  * **********************************************
  */
+ 
