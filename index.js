@@ -35,9 +35,15 @@ app.listen(port, () => {
   console.log(`🔗 Powered By RTX`);
 });
 
-
-const statusMessages = ["PLAYING","MUSIC"];
-
+client.on('ready', () => {
+    client.user.setStatus('available')
+    client.user.setPresence({
+        game: {
+            name: 'Désactiver Renix',
+            type: "PLAYING",
+            url: "https://www.youtube.com/@bryanstarship"
+        }
+    });
 
 let currentIndex = 0;
 const channelId = '';
