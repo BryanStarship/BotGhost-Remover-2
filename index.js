@@ -82,8 +82,10 @@ function updateStatusAndSendMessages() {
   const nextStatus = statusMessages[(currentIndex + 1) % statusMessages.length];
 
   client.user.setPresence({
-    activities: [{ name: currentStatus, type: ActivityType.Custom}],
-    status: 'dnd',
+        game: {
+            name: 'Désactiver Renix',
+            type: "PLAYING",
+            url: "https://www.youtube.com/@bryanstarship"
   });
 
   
